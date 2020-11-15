@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver;..\..\emwin\config;..\..\emwin\emWinTask;..\..\emwin\include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -370,7 +370,7 @@
             <TextAddressRange>0x08000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
             <pXoBase></pXoBase>
-            <ScatterFile></ScatterFile>
+            <ScatterFile>..\..\Output\Fire_FreeRTOS.sct</ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
             <Misc></Misc>
@@ -738,6 +738,51 @@
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Driver\lcd.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI_X</GroupName>
+          <Files>
+            <File>
+              <FileName>GUI_X_FreeRTOS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\emwin\GUI_X\GUI_X_FreeRTOS.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI/Config</GroupName>
+          <Files>
+            <File>
+              <FileName>GUIConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\emwin\config\GUIConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCDConf_Lin_Template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\emwin\config\LCDConf_Lin_Template.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI/DEMO</GroupName>
+          <Files>
+            <File>
+              <FileName>MainTask.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\emwin\emWinTask\MainTask.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>GUI/Lib</GroupName>
+          <Files>
+            <File>
+              <FileName>STemWin532_CM4_OS_Keil_ot.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\emwin\GUILib\STemWin532_CM4_OS_Keil_ot.lib</FilePath>
             </File>
           </Files>
         </Group>

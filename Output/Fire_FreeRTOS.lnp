@@ -52,6 +52,11 @@
 "..\..\output\main.o"
 "..\..\output\cpu.o"
 "..\..\output\lcd.o"
+"..\..\output\gui_x_freertos.o"
+"..\..\output\guiconf.o"
+"..\..\output\lcdconf_lin_template.o"
+"..\..\output\maintask.o"
+"..\..\emwin\GUILib\STemWin532_CM4_OS_Keil_ot.lib"
 --library_type=microlib --strict --scatter "..\..\Output\Fire_FreeRTOS.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

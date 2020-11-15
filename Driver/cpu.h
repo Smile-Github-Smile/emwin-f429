@@ -89,7 +89,8 @@ typedef struct
 #define LTDC_BACKLAYERCOLOR			0X00000000	
 
 //LCD帧缓冲区首地址,这里定义在SDRAM里面.
-#define LCD_FRAME_BUF_ADDR			0XC1000000   
+#define LCD_FRAME_BUF_ADDR			0XC0000000   
+
 
 
 int fputc(int ch, FILE *f);
