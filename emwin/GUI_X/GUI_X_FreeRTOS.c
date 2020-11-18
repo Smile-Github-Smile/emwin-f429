@@ -65,8 +65,8 @@ Purpose     : This file provides emWin Interface with FreeRTOS
 *
 * Global data
 */
-static xSemaphoreHandle xQueueMutex;
-static xSemaphoreHandle xSemaTxDone;
+static xSemaphoreHandle xQueueMutex = NULL;
+static xSemaphoreHandle xSemaTxDone = NULL;
 
 /*********************************************************************
 *
@@ -81,12 +81,12 @@ and delay function. Default time unit (tick), normally is
 
 int GUI_X_GetTime(void)
 {
-  return ((int) xTaskGetTickCount());
+	return ((int) xTaskGetTickCount());
 }
 
 void GUI_X_Delay(int ms)
 {
-  vTaskDelay( ms );
+	vTaskDelay( ms );
 }
 
 /*********************************************************************
@@ -110,7 +110,10 @@ void GUI_X_Init(void) {}
 * Called if WM is in idle state
 */
 
-void GUI_X_ExecIdle(void) {}
+void GUI_X_ExecIdle(void) 
+{
+	GUI_X_Delay(1);
+}
 
 /*********************************************************************
 *
@@ -144,6 +147,7 @@ void GUI_X_InitOS(void)
 
 void GUI_X_Unlock(void)
 { 
+	/* 给出互斥信号量 */
 	xSemaphoreGive( xQueueMutex ); 
 }
 
@@ -153,7 +157,7 @@ void GUI_X_Lock(void)
 	{
 		GUI_X_InitOS();
 	}
-
+	/* 获取互斥信号量*/
 	xSemaphoreTake( xQueueMutex, portMAX_DELAY );
 }
 
@@ -165,12 +169,14 @@ U32 GUI_X_GetTaskId(void)
 
 void GUI_X_WaitEvent (void) 
 {
+	/* 获取信号量 */
 	while( xSemaphoreTake(xSemaTxDone, portMAX_DELAY ) != pdTRUE );
 }
 
 
 void GUI_X_SignalEvent (void) 
 {
+	/* 给出信号量 */
 	xSemaphoreGive( xSemaTxDone );
 }
 

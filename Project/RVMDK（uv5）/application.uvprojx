@@ -313,7 +313,7 @@
           </ArmAdsMisc>
           <Cads>
             <interw>1</interw>
-            <Optim>3</Optim>
+            <Optim>1</Optim>
             <oTime>0</oTime>
             <SplitLS>0</SplitLS>
             <OneElfS>1</OneElfS>
@@ -763,6 +763,11 @@
               <FileName>LCDConf_Lin_Template.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\emwin\config\LCDConf_Lin_Template.c</FilePath>
+            </File>
+            <File>
+              <FileName>GUIDRV_Template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\emwin\config\GUIDRV_Template.c</FilePath>
             </File>
           </Files>
         </Group>

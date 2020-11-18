@@ -96,9 +96,9 @@ typedef struct
 int fputc(int ch, FILE *f);
 int fgetc(FILE *f);
 
-void SystemRunLedTimer_ISR(void);
-void SetSystemLedZt(BOOLEAN State);
-void SetBlLedZt(BOOLEAN State);
+void systemRunLedTimer_ISR(void);
+void setSystemLedZt(BOOLEAN State);
+void setBlLedZt(BOOLEAN State);
 void hardwareInit(void);
 
 

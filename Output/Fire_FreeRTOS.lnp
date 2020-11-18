@@ -55,6 +55,7 @@
 "..\..\output\gui_x_freertos.o"
 "..\..\output\guiconf.o"
 "..\..\output\lcdconf_lin_template.o"
+"..\..\output\guidrv_template.o"
 "..\..\output\maintask.o"
 "..\..\emwin\GUILib\STemWin532_CM4_OS_Keil_ot.lib"
 --library_type=microlib --strict --scatter "..\..\Output\Fire_FreeRTOS.sct"

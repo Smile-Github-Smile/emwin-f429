@@ -43,12 +43,13 @@ Purpose     : Display controller initialization
 //
 // Define the available number of bytes available for the GUI
 //
-#define EX_SRAM   1/*1 used extern sram, 0 used internal sram */
+/*1 used extern sram, 0 used internal sram */
+#define EX_SRAM   1
 
 #if EX_SRAM
-#define GUI_NUMBYTES  (1024*1024*8)
+#define GUI_NUMBYTES  (1024 * 1024 * 8)
 #else
-#define GUI_NUMBYTES  (100*1024)
+#define GUI_NUMBYTES  (100 * 1024)
 #endif
 
 /* Define the average block size */

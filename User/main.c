@@ -10,6 +10,7 @@
 #include "stm32f4xx.h"
 #include "cpu.h"
 #include "lcd.h"
+#include "MainTask.h"
 
 // FreeRTOS head file, add here.
 #include "FreeRTOS.h"
@@ -34,6 +35,8 @@ static TaskHandle_t Main_Task_Handle = NULL;
 static TaskHandle_t Tick_Task_Handle = NULL;
 /* GUI任务句柄 */
 static TaskHandle_t GUI_Task_Handle = NULL;
+
+static INT16U testsram[10000] __attribute__((at(0XC1000000)));//测试用数组
 
 /*
  *************************************************************************
@@ -135,25 +138,10 @@ static void AppTaskCreate(void)
 u8 pBuffer[20];
 static void Main_Task(void* parameter)
 {
-
 	while(1)
 	{
 		vTaskDelay(1000);
-		SetSystemLedZt(1);
-
-		LTDC_Draw_Point(10, 200, RED);
-		
-		LCD_DrawLine(400, 0, 500, 400);
-		
-		LCD_Color_Fill(0 , 0, 100, 100, RED);
-		
-		LCD_Draw_Circle(200, 200, 100);
-		
-		LCD_DrawRectangle(300, 300, 350, 350);
-		
-		LCD_ShowString(400, 80, 240, 24, 32, "LTDC LCD TEST");
-		
-		
+		setSystemLedZt(1);
 	}
 }
 
@@ -168,9 +156,10 @@ static void Tick_Task(void* parameter)
 	while(1)
 	{
 		vTaskDelay(100);
-		SystemRunLedTimer_ISR();	
+		systemRunLedTimer_ISR();	
 	}
 }
+
 
 /**
   * @brief 	GUI任务主体
@@ -180,11 +169,22 @@ static void Tick_Task(void* parameter)
   */
 static void GUI_Task(void* parameter)
 {
-//	GUI_Init();	//初始化STemWin
-
+	u32 ts=0; 
+//	WM_SetCreateFlags(WM_CF_MEMDEV);//开启STemWin存储设备
+//	GUI_Init();					//初始化STemWin
+//	WM_MULTIBUF_Enable(1);		//开启STemWin多缓冲，RGB屏可能会用到
+//	MainTask();
+	for(ts = 0; ts < 10000; ts++)
+	{
+		testsram[ts] = ts;//预存测试数据	 
+  	}
+	for(ts = 0; ts < 10000; ts++)
+	{
+		printf("testsram[%d]:%d\r\n", ts, testsram[ts]);
+	}
 	while(1)
 	{
-//		MainTask();
+	
 		vTaskDelay(1000);
 	}
 }

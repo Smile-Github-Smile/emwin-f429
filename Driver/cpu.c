@@ -514,11 +514,11 @@ static void initSDRAM(void)
  ******************************************************************
  */
 
-INT16U ltdc_lcd_framebuf[1280][800] __attribute__((at(LCD_FRAME_BUF_ADDR)));	//定义最大屏分辨率时,LCD所需的帧缓存数组大小
+INT16U ltdc_lcd_framebuf[1024][600] __attribute__((at(LCD_FRAME_BUF_ADDR)));	//定义最大屏分辨率时,LCD所需的帧缓存数组大小
 INT32U *ltdc_framebuf[2];			//LTDC LCD帧缓存数组指针,必须指向对应大小的内存区域
 
 _ltdc_dev lcdltdc;					//管理LCD LTDC参数
-_lcd_dev lcddev;					//管理LCD重要参数
+_lcd_dev  lcddev;					//管理LCD重要参数
 
 
 //LTDC时钟(Fdclk)设置函数
@@ -942,7 +942,7 @@ int fgetc(FILE *f)
 
 static BOOLEAN p_SystemRunLedState = 0;
 //系统灯运行服务函数
-void SystemRunLedTimer_ISR(void)	
+void systemRunLedTimer_ISR(void)	
 {
 	static INT16U s_State;
 	
@@ -964,7 +964,7 @@ void SystemRunLedTimer_ISR(void)
 
 
 //State  1亮  0 灭
-void SetSystemLedZt(BOOLEAN State)	
+void setSystemLedZt(BOOLEAN State)	
 {
 	p_SystemRunLedState = State;
 }
@@ -972,7 +972,7 @@ void SetSystemLedZt(BOOLEAN State)
 
 
 //State  1亮  0 灭
-void SetBlLedZt(BOOLEAN State)	
+void setBlLedZt(BOOLEAN State)	
 {
 	if(State == 1)
 	{
@@ -999,6 +999,6 @@ void hardwareInit(void)
 	initPrintUart(115200);
 	initSDRAM();
 	initLCD();
-	SetBlLedZt(1);
+	setBlLedZt(1);
 }
 /* ------------------------------------------end of file---------------------------------------- */
