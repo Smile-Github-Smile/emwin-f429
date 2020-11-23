@@ -10,8 +10,6 @@
 #include "stm32f4xx.h"
 #include "cpu.h"
 #include "lcd.h"
-#include "MainTask.h"
-
 // FreeRTOS head file, add here.
 #include "FreeRTOS.h"
 #include "task.h"
@@ -122,7 +120,7 @@ static void AppTaskCreate(void)
 					   (UBaseType_t      )2,         				/* 任务的优先级 */
 					   (TaskHandle_t     )&GUI_Task_Handle);		/* 任务控制块指针 */
 	if(pdPASS == xReturn)
-		printf(" creat GUI_Task success！\r\n");
+		printf(" creat GUI_Task  success！\r\n");
 
 	vTaskDelete(AppTaskCreate_Handle);//删除AppTaskCreate任务
 
@@ -169,19 +167,21 @@ static void Tick_Task(void* parameter)
   */
 static void GUI_Task(void* parameter)
 {
-	u32 ts=0; 
+//	u32 ts=0; 
+//	for(ts = 0; ts < 10000; ts++)
+//	{
+//		testsram[ts] = ts;//预存测试数据	 
+//  	}
+//	for(ts = 0; ts < 10000; ts++)
+//	{
+//		printf("testsram[%d]:%d\r\n", ts, testsram[ts]);
+//	}
+	
 //	WM_SetCreateFlags(WM_CF_MEMDEV);//开启STemWin存储设备
 //	GUI_Init();					//初始化STemWin
 //	WM_MULTIBUF_Enable(1);		//开启STemWin多缓冲，RGB屏可能会用到
 //	MainTask();
-	for(ts = 0; ts < 10000; ts++)
-	{
-		testsram[ts] = ts;//预存测试数据	 
-  	}
-	for(ts = 0; ts < 10000; ts++)
-	{
-		printf("testsram[%d]:%d\r\n", ts, testsram[ts]);
-	}
+
 	while(1)
 	{
 	

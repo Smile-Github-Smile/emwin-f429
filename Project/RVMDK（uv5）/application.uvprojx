@@ -743,53 +743,15 @@
         </Group>
         <Group>
           <GroupName>GUI_X</GroupName>
-          <Files>
-            <File>
-              <FileName>GUI_X_FreeRTOS.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\emwin\GUI_X\GUI_X_FreeRTOS.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>GUI/Config</GroupName>
-          <Files>
-            <File>
-              <FileName>GUIConf.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\emwin\config\GUIConf.c</FilePath>
-            </File>
-            <File>
-              <FileName>LCDConf_Lin_Template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\emwin\config\LCDConf_Lin_Template.c</FilePath>
-            </File>
-            <File>
-              <FileName>GUIDRV_Template.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\emwin\config\GUIDRV_Template.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>GUI/DEMO</GroupName>
-          <Files>
-            <File>
-              <FileName>MainTask.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\..\emwin\emWinTask\MainTask.c</FilePath>
-            </File>
-          </Files>
         </Group>
         <Group>
           <GroupName>GUI/Lib</GroupName>
-          <Files>
-            <File>
-              <FileName>STemWin532_CM4_OS_Keil_ot.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\..\emwin\GUILib\STemWin532_CM4_OS_Keil_ot.lib</FilePath>
-            </File>
-          </Files>
         </Group>
       </Groups>
     </Target>
