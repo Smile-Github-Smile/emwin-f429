@@ -49,7 +49,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>..\..\Output\</OutputDirectory>
-          <OutputName>Fire_FreeRTOS</OutputName>
+          <OutputName>FreeRTOS</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver;..\..\emwin\config;..\..\emwin\emWinTask;..\..\emwin\include</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver;..\..\Malloc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -381,7 +381,7 @@
       </TargetOption>
       <Groups>
         <Group>
-          <GroupName>STM32F4xx_StdPeriph_Driver</GroupName>
+          <GroupName>stdlib</GroupName>
           <Files>
             <File>
               <FileName>misc.c</FileName>
@@ -637,7 +637,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>FreeRTOS/port</GroupName>
+          <GroupName>rtos/port</GroupName>
           <Files>
             <File>
               <FileName>heap_4.c</FileName>
@@ -652,7 +652,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>FreeRTOS/src</GroupName>
+          <GroupName>rtos/src</GroupName>
           <Files>
             <File>
               <FileName>FreeRTOSConfig.h</FileName>
@@ -692,7 +692,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>STARTUP</GroupName>
+          <GroupName>startup</GroupName>
           <Files>
             <File>
               <FileName>startup_stm32f429_439xx.s</FileName>
@@ -702,7 +702,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>CMSIS</GroupName>
+          <GroupName>cmsis</GroupName>
           <Files>
             <File>
               <FileName>system_stm32f4xx.c</FileName>
@@ -712,7 +712,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>USER</GroupName>
+          <GroupName>user</GroupName>
           <Files>
             <File>
               <FileName>stm32f4xx_it.c</FileName>
@@ -727,7 +727,7 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Driver</GroupName>
+          <GroupName>driver</GroupName>
           <Files>
             <File>
               <FileName>cpu.c</FileName>
@@ -742,16 +742,24 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>GUI_X</GroupName>
+          <GroupName>dsplib</GroupName>
+          <Files>
+            <File>
+              <FileName>arm_cortexM4lf_math.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\Dsplib\arm_cortexM4lf_math.lib</FilePath>
+            </File>
+          </Files>
         </Group>
         <Group>
-          <GroupName>GUI/Config</GroupName>
-        </Group>
-        <Group>
-          <GroupName>GUI/DEMO</GroupName>
-        </Group>
-        <Group>
-          <GroupName>GUI/Lib</GroupName>
+          <GroupName>malloc</GroupName>
+          <Files>
+            <File>
+              <FileName>malloc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Malloc\malloc.c</FilePath>
+            </File>
+          </Files>
         </Group>
       </Groups>
     </Target>

@@ -15,8 +15,6 @@
 
 
 
-
-
 int fputc(int ch, FILE *f);
 int fgetc(FILE *f);
 

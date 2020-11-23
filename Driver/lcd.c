@@ -11,7 +11,7 @@
 #include "font.h"
 
 INT16U ltdc_lcd_framebuf[1280][800] __attribute__((at(LCD_FRAME_BUF_ADDR)));	//定义最大屏分辨率时,LCD所需的帧缓存数组大小
-INT32U *ltdc_framebuf[2];					//LTDC LCD帧缓存数组指针,必须指向对应大小的内存区域
+INT32U *ltdc_framebuf[2];	//LTDC LCD帧缓存数组指针,必须指向对应大小的内存区域
 
 
 _ltdc_dev lcdltdc;	//管理LCD LTDC的重要参数
@@ -329,7 +329,7 @@ void LCD_ShowChar(INT16U x, INT16U y, INT8U num, INT8U size, INT8U mode)
 //width,height:区域大小  
 //size:字体大小
 //*p:字符串起始地址		  
-void LCD_ShowString(INT16U x, INT16U y, INT16U width, INT16U height, INT8U size, INT8U *p)
+void LCD_ShowString(INT16U x, INT16U y, INT16U width, INT16U height, INT8U size, INT8S *p)
 {         
 	INT8U x0 = x;
 	width += x;

@@ -184,7 +184,14 @@ static void GUI_Task(void* parameter)
 
 	while(1)
 	{
-	
+		LCD_DrawLine( 0 , 0 , 200 , 200);
+		LCD_DrawRectangle(200 , 200 , 400 , 400);
+		LCD_Draw_Circle(500 , 200, 100);
+		LCD_Fill(600 , 300 , 800 , 500 , BRRED);
+		
+		LCD_ShowNum(800 , 200, 123456, 6, 32);
+		LCD_ShowxNum(800 , 100, 123456, 6, 32 , 1);
+		LCD_ShowString(100 , 500 , 300 , 100 , 32 , "smile hello world");
 		vTaskDelay(1000);
 	}
 }

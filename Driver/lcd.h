@@ -104,10 +104,11 @@ void LCD_Fast_DrawPoint(INT16U x, INT16U y, INT32U color);
 void LCD_DrawLine(INT16U x1, INT16U y1, INT16U x2, INT16U y2);
 void LCD_DrawRectangle(INT16U x1, INT16U y1, INT16U x2, INT16U y2);
 void LCD_Draw_Circle(INT16U x0, INT16U y0, INT8U r);
+void LCD_Fill(INT16U sx, INT16U sy, INT16U ex, INT16U ey, INT32U color);
 void LCD_Color_Fill(INT16U sx, INT16U sy, INT16U ex, INT16U ey, INT16U *color);
 void LCD_ShowNum(INT16U x, INT16U y, INT32U num, INT8U len, INT8U size);
 void LCD_ShowxNum(INT16U x, INT16U y, INT32U num, INT8U len, INT8U size, INT8U mode);
-void LCD_ShowString(INT16U x, INT16U y, INT16U width, INT16U height, INT8U size, INT8U *p);
+void LCD_ShowString(INT16U x, INT16U y, INT16U width, INT16U height, INT8U size, INT8S *p);
 
 #endif // __LCD_H
 
