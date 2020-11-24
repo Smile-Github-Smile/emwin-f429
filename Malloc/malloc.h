@@ -31,18 +31,15 @@
 //内存管理控制器
 struct mem_malloc_dev
 {
-	void 	(*init)(INT8U);					//初始化
-	INT16U 	(*perused)(INT8U);		  	    //内存使用率
-	INT8U 	 *membase[SRAMBANK];			//内存池 
-	INT32U 	 *memmap[SRAMBANK]; 			//内存管理状态表
-	INT8U     memrdy[SRAMBANK]; 			//内存管理是否就绪
+	void 	(*init)(INT8U);		//初始化
+	INT16U 	(*perused)(INT8U);	//内存使用率
+	INT8U 	*membase[SRAMBANK];	//内存池 
+	INT32U 	*memmap[SRAMBANK]; 	//内存管理状态表
+	INT8U   memrdy[SRAMBANK]; 	//内存管理就绪状态
 };
+ 
 
-
-extern struct mem_malloc_dev malloc_dev;	 
-
-
-
+//内部调用函数
 void mymemset(void *s, INT8U c, INT32U count);	//设置内存
 void mymemcpy(void *des, void *src, INT32U n);	//复制内存     
 void my_mem_init(INT8U memx);					//内存管理初始化函数(外/内部调用)
@@ -53,7 +50,7 @@ INT16U my_mem_perused(INT8U memx) ;				//获得内存使用率(外/内部调用)
 //用户调用函数
 void  myfree(INT8U memx, void *ptr);  			//内存释放(外部调用)
 void *mymalloc(INT8U memx, INT32U size);		//内存分配(外部调用)
-void *myrealloc(INT8U memx,void *ptr,INT32U size);//重新分配内存(外部调用)
+void *myrealloc(INT8U memx, void *ptr, INT32U size);//重新分配内存(外部调用)
 
 
 #endif
