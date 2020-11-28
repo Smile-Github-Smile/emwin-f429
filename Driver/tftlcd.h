@@ -1,13 +1,13 @@
 /**
   ******************************************************************************
-  * @file    lcd.h
+  * @file    tftlcd.h
   * @author  JFY
   * @version V1.0
   * @date    2020-08-08
   ******************************************************************************
   */ 
 
-#ifndef __LCD_H
+#ifndef __TFTLCD_H
 #define __LCD_H
 
 #include "stm32f4xx.h"
@@ -96,6 +96,10 @@ typedef struct
 	INT16U 	height;		//LCD 高度
 	INT8U  	dir;		//横屏还是竖屏控制：0，竖屏；1，横屏。	
 }_lcd_dev; 
+
+
+extern _ltdc_dev lcdltdc;	//管理LCD LTDC的重要参数
+extern _lcd_dev lcddev;	//管理LCD重要参数
 
 
 void initLCD(void);

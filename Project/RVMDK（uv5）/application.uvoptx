@@ -135,7 +135,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGUARM</Key>
-          <Name>(105=-1,-1,-1,-1,0)</Name>
+          <Name></Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -158,7 +158,24 @@
           <Name>UL2CM3(-S0 -C0 -P0 -FD20000000 -FC1000 -FN1 -FF0STM32F4xx_1024 -FS08000000 -FL0100000 -FP0($$Device:STM32F429IG$CMSIS\Flash\STM32F4xx_1024.FLM))</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint/>
+      <Breakpoint>
+        <Bp>
+          <Number>0</Number>
+          <Type>0</Type>
+          <LineNumber>476</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134224668</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>C:\Users\Smile\Desktop\emwin-f429\Project\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\FreeRTOS\../../Libraries/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c\476</Expression>
+        </Bp>
+      </Breakpoint>
       <WatchWindow1>
         <Ww>
           <count>0</count>
@@ -832,7 +849,7 @@
 
   <Group>
     <GroupName>startup</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -852,7 +869,7 @@
 
   <Group>
     <GroupName>cmsis</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -872,7 +889,7 @@
 
   <Group>
     <GroupName>user</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -927,8 +944,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\..\Driver\lcd.c</PathWithFileName>
-      <FilenameWithoutPath>lcd.c</FilenameWithoutPath>
+      <PathWithFileName>..\..\Driver\tftlcd.c</PathWithFileName>
+      <FilenameWithoutPath>tftlcd.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -956,7 +973,7 @@
 
   <Group>
     <GroupName>malloc</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -969,6 +986,102 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\Malloc\malloc.c</PathWithFileName>
       <FilenameWithoutPath>malloc.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>emwin/lib</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>10</GroupNumber>
+      <FileNumber>58</FileNumber>
+      <FileType>4</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\STemwin\lib\GUI_CM4F_L.lib</PathWithFileName>
+      <FilenameWithoutPath>GUI_CM4F_L.lib</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>emwin/cfg</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>59</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\STemwin\os\GUI_X_OS.c</PathWithFileName>
+      <FilenameWithoutPath>GUI_X_OS.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>60</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\STemwin\config\GUIConf.c</PathWithFileName>
+      <FilenameWithoutPath>GUIConf.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>61</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\STemwin\config\GUIDRV_Template.c</PathWithFileName>
+      <FilenameWithoutPath>GUIDRV_Template.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+    <File>
+      <GroupNumber>11</GroupNumber>
+      <FileNumber>62</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\STemwin\config\LCDConf_FlexColor_Template.c</PathWithFileName>
+      <FilenameWithoutPath>LCDConf_FlexColor_Template.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
+    </File>
+  </Group>
+
+  <Group>
+    <GroupName>demo</GroupName>
+    <tvExp>1</tvExp>
+    <tvExpOptDlg>0</tvExpOptDlg>
+    <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
+    <File>
+      <GroupNumber>12</GroupNumber>
+      <FileNumber>63</FileNumber>
+      <FileType>1</FileType>
+      <tvExp>0</tvExp>
+      <tvExpOptDlg>0</tvExpOptDlg>
+      <bDave2>0</bDave2>
+      <PathWithFileName>..\..\Demo\test.c</PathWithFileName>
+      <FilenameWithoutPath>test.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

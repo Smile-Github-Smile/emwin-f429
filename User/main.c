@@ -9,7 +9,7 @@
 // bsp head file, add here.
 #include "stm32f4xx.h"
 #include "cpu.h"
-#include "lcd.h"
+#include "tftlcd.h"
 // FreeRTOS head file, add here.
 #include "FreeRTOS.h"
 #include "task.h"
@@ -17,6 +17,9 @@
 #include "list.h"
 #include "portable.h"
 #include "FreeRTOSConfig.h"
+// emwin head file, add here.
+#include "GUI.h"
+#include "WM.h"
 
 
 /*
@@ -34,7 +37,6 @@ static TaskHandle_t Tick_Task_Handle = NULL;
 /* GUI任务句柄 */
 static TaskHandle_t GUI_Task_Handle = NULL;
 
-static INT16U testsram[10000] __attribute__((at(0XC1000000)));//测试用数组
 
 /*
  *************************************************************************
@@ -167,32 +169,11 @@ static void Tick_Task(void* parameter)
   */
 static void GUI_Task(void* parameter)
 {
-//	u32 ts=0; 
-//	for(ts = 0; ts < 10000; ts++)
-//	{
-//		testsram[ts] = ts;//预存测试数据	 
-//  	}
-//	for(ts = 0; ts < 10000; ts++)
-//	{
-//		printf("testsram[%d]:%d\r\n", ts, testsram[ts]);
-//	}
+	MainTask();
 	
-//	WM_SetCreateFlags(WM_CF_MEMDEV);//开启STemWin存储设备
-//	GUI_Init();					//初始化STemWin
-//	WM_MULTIBUF_Enable(1);		//开启STemWin多缓冲，RGB屏可能会用到
-//	MainTask();
-
 	while(1)
 	{
-		LCD_DrawLine( 0 , 0 , 200 , 200);
-		LCD_DrawRectangle(200 , 200 , 400 , 400);
-		LCD_Draw_Circle(500 , 200, 100);
-		LCD_Fill(600 , 300 , 800 , 500 , BRRED);
-		
-		LCD_ShowNum(800 , 200, 123456, 6, 32);
-		LCD_ShowxNum(800 , 100, 123456, 6, 32 , 1);
-		LCD_ShowString(100 , 500 , 300 , 100 , 32 , "smile hello world");
-		vTaskDelay(1000);
+		vTaskDelay(10);
 	}
 }
 

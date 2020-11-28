@@ -43,7 +43,7 @@
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
-..\..\output\main.o: ..\..\Driver\lcd.h
+..\..\output\main.o: ..\..\Driver\tftlcd.h
 ..\..\output\main.o: ..\..\FreeRTOS\include\FreeRTOS.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
 ..\..\output\main.o: ..\..\User\FreeRTOSConfig.h
@@ -56,3 +56,12 @@
 ..\..\output\main.o: ..\..\FreeRTOS\include\list.h
 ..\..\output\main.o: ..\..\FreeRTOS\include\queue.h
 ..\..\output\main.o: ..\..\FreeRTOS\include\list.h
+..\..\output\main.o: ..\..\STemwin\inc\GUI.h
+..\..\output\main.o: ..\..\STemwin\inc\GUI_ConfDefaults.h
+..\..\output\main.o: ..\..\STemwin\config\GUIConf.h
+..\..\output\main.o: ..\..\STemwin\inc\GUI_Type.h
+..\..\output\main.o: ..\..\STemwin\inc\LCD.h
+..\..\output\main.o: ..\..\STemwin\inc\Global.h
+..\..\output\main.o: ..\..\STemwin\inc\GUI_Version.h
+..\..\output\main.o: ..\..\STemwin\inc\WM.h
+..\..\output\main.o: ..\..\STemwin\inc\WM_GUI.h

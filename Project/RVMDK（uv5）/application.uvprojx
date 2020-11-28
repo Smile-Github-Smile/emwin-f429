@@ -189,7 +189,7 @@
             <hadIRAM2>1</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>1</useUlib>
+            <useUlib>0</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -337,9 +337,9 @@
             <v6Rtti>0</v6Rtti>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,</Define>
+              <Define>USE_STDPERIPH_DRIVER,STM32F429_439xx,ARM_MATH_CM4,__CC_ARM,ARM_MATH_MATRIX_CHECK,ARM_MATH_ROUNDING,__FPU_PRESENT=1</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver;..\..\Malloc</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Include;..\..\Libraries\CMSIS\Include;..\..\Libraries\STM32F4xx_StdPeriph_Driver\inc;..\..\FreeRTOS\include;..\..\FreeRTOS\port\RVDS\ARM_CM4F;..\..\User;..\..\Driver;..\..\Malloc;..\..\STemwin\inc;..\..\STemwin\config</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -735,9 +735,9 @@
               <FilePath>..\..\Driver\cpu.c</FilePath>
             </File>
             <File>
-              <FileName>lcd.c</FileName>
+              <FileName>tftlcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\..\Driver\lcd.c</FilePath>
+              <FilePath>..\..\Driver\tftlcd.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -758,6 +758,51 @@
               <FileName>malloc.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Malloc\malloc.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>emwin/lib</GroupName>
+          <Files>
+            <File>
+              <FileName>GUI_CM4F_L.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\..\STemwin\lib\GUI_CM4F_L.lib</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>emwin/cfg</GroupName>
+          <Files>
+            <File>
+              <FileName>GUI_X_OS.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\STemwin\os\GUI_X_OS.c</FilePath>
+            </File>
+            <File>
+              <FileName>GUIConf.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\STemwin\config\GUIConf.c</FilePath>
+            </File>
+            <File>
+              <FileName>GUIDRV_Template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\STemwin\config\GUIDRV_Template.c</FilePath>
+            </File>
+            <File>
+              <FileName>LCDConf_FlexColor_Template.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\STemwin\config\LCDConf_FlexColor_Template.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>demo</GroupName>
+          <Files>
+            <File>
+              <FileName>test.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Demo\test.c</FilePath>
             </File>
           </Files>
         </Group>

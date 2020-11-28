@@ -1,13 +1,13 @@
 /**
   ******************************************************************************
-  * @file    lcd.c
+  * @file    tftlcd.c
   * @author  JFY
   * @version V1.0
   * @date    2020-08-08
   ******************************************************************************
   */ 
 
-#include "lcd.h"
+#include "tftlcd.h"
 #include "font.h"
 
 INT16U ltdc_lcd_framebuf[1280][800] __attribute__((at(LCD_FRAME_BUF_ADDR)));	//定义最大屏分辨率时,LCD所需的帧缓存数组大小
