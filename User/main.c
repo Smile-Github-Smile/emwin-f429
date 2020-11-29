@@ -20,6 +20,7 @@
 // emwin head file, add here.
 #include "GUI.h"
 #include "WM.h"
+#include "GUIDEMO.h"
 
 
 /*
@@ -169,11 +170,10 @@ static void Tick_Task(void* parameter)
   */
 static void GUI_Task(void* parameter)
 {
-	MainTask();
-	
+
 	while(1)
 	{
-		vTaskDelay(10);
+		MainTask(); 
 	}
 }
 
