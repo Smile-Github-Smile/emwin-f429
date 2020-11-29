@@ -136,7 +136,7 @@ static void AppTaskCreate(void)
 					   (UBaseType_t      )1,         				/* 任务的优先级 */
 					   (TaskHandle_t     )&Touch_Task_Handle);		/* 任务控制块指针 */
 	if(pdPASS == xReturn)
-		printf(" creat GUI_Task  success！\r\n");
+		printf(" creat Touch_Task success！\r\n");
 
 	vTaskDelete(AppTaskCreate_Handle);//删除AppTaskCreate任务
 

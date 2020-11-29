@@ -111,7 +111,7 @@ static INT8U FT5206_Init(void)
 	FT5206_RD_Reg(FT_ID_G_LIB_VERSION , &temp[0] , 2);  
 	if((temp[0] == 0X30 && temp[1] == 0X03) || (temp[1] == 0X01 || temp[1] == 0X02))//版本:0X3003/0X0001/0X0002
 	{
-		printf("CTP ID:%x\r\n",((INT16U)temp[0] << 8) + temp[1]);
+		//printf("CTP ID:%x\r\n",((INT16U)temp[0] << 8) + temp[1]);
 		return 0;
 	} 
 	return 1;
@@ -156,7 +156,7 @@ static INT8U FT5206_Scan(INT8U mode)
 					{
 						tp_dev.x[i] = tp_dev.y[i] = 0;//必须是contact事件，才认为有效
 					}
-					printf("x[%d]:%d,y[%d]:%d\r\n", i, tp_dev.x[i], i, tp_dev.y[i]);
+					//printf("x[%d]:%d,y[%d]:%d\r\n", i, tp_dev.x[i], i, tp_dev.y[i]);
 				}			
 			} 
 			res = 1;

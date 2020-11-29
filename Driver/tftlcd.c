@@ -449,10 +449,10 @@ static void LTDC_Draw_Point(INT16U x, INT16U y, INT32U color)
 
 	if(lcdltdc.dir)	//横屏
 	{
-        *(INT16U*)((INT32U)ltdc_framebuf[lcdltdc.activelayer]+lcdltdc.pixsize*(lcdltdc.pwidth*y+x))=color;
+        *(INT16U*)((INT32U)ltdc_framebuf[lcdltdc.activelayer] + lcdltdc.pixsize * (lcdltdc.pwidth * y + x)) = color;
 	}else 			//竖屏
 	{
-        *(INT16U*)((INT32U)ltdc_framebuf[lcdltdc.activelayer]+lcdltdc.pixsize*(lcdltdc.pwidth*(lcdltdc.pheight-x-1)+y))=color; 
+        *(INT16U*)((INT32U)ltdc_framebuf[lcdltdc.activelayer] + lcdltdc.pixsize * (lcdltdc.pwidth * (lcdltdc.pheight - x - 1) + y)) = color; 
 	}
 
 }
@@ -550,7 +550,7 @@ static void LTDC_Color_Fill(INT16U sx, INT16U sy, INT16U ex, INT16U ey, INT16U *
 	DMA2D->FGPFCCR = LCD_PIXFORMAT;		//设置颜色格式
 	DMA2D->FGOR = 0;					//前景层行偏移为0
 	DMA2D->OOR = offline;				//设置行偏移 
-	DMA2D->FGMAR = (INT32U)color;			//源地址
+	DMA2D->FGMAR = (INT32U)color;		//源地址
 	DMA2D->OMAR = addr;					//输出存储器地址
 	DMA2D->NLR = (pey-psy+1) | ((pex - psx + 1)<<16);	//设定行数寄存器 
 	DMA2D->CR |= 1<<0;					//启动DMA2D
