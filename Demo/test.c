@@ -3763,14 +3763,14 @@ static void _RadialMenu(void) {
 *       MainTask
 */
 void MainTask(void) {
-	WM_SetCreateFlags(WM_CF_MEMDEV);
-	GUI_Init();
-	WM_MULTIBUF_Enable(1);
-	WM_MOTION_Enable(1);
-	_RadialMenu();
-	while (1) {
-		GUI_Delay(50);
-	}
+  WM_SetCreateFlags(WM_CF_MEMDEV);
+  GUI_Init();
+  WM_MULTIBUF_Enable(1);
+  WM_MOTION_Enable(1);
+  _RadialMenu();
+  while (1) {
+    GUI_Delay(50);
+  }
 }
 
 /*************************** End of file ****************************/

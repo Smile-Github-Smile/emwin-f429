@@ -85,3 +85,4 @@
 ..\..\output\main.o: ..\..\STemwin\inc\ICONVIEW.h
 ..\..\output\main.o: ..\..\STemwin\inc\LISTVIEW.h
 ..\..\output\main.o: ..\..\STemwin\inc\TREEVIEW.h
+..\..\output\main.o: ..\..\Demo\textdisplay.h

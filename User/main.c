@@ -22,6 +22,8 @@
 #include "WM.h"
 #include "GUIDEMO.h"
 
+#include "textdisplay.h"
+
 
 /*
  *************************************************************************
@@ -170,10 +172,15 @@ static void Tick_Task(void* parameter)
   */
 static void GUI_Task(void* parameter)
 {
-
+	WM_SetCreateFlags(WM_CF_MEMDEV);
+	GUI_Init();
+	WM_MULTIBUF_Enable(1);
+	WM_MOTION_Enable(1);
+	
+	GUIDEMO_Main();
 	while(1)
 	{
-		MainTask(); 
+		vTaskDelay(100);
 	}
 }
 
