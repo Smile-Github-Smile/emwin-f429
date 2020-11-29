@@ -47,6 +47,7 @@
 ..\..\output\stm32f4xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\stm32f4xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\..\output\stm32f4xx_it.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\stm32f4xx_it.o: ..\..\Driver\ft5206.h
 ..\..\output\stm32f4xx_it.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\stm32f4xx_it.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\stm32f4xx_it.o: ..\..\FreeRTOS\include\deprecated_definitions.h

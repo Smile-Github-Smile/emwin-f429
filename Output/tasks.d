@@ -46,6 +46,7 @@
 ..\..\output\tasks.o: ..\..\Driver\includes.h
 ..\..\output\tasks.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\tasks.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
+..\..\output\tasks.o: ..\..\Driver\ft5206.h
 ..\..\output\tasks.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\tasks.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\tasks.o: ..\..\FreeRTOS\include\deprecated_definitions.h

@@ -12,6 +12,7 @@
 #include "stm32f4xx.h" 
 #include "stm32f4xx_rcc.h"
 #include "includes.h"
+#include "ft5206.h"
 
 
 

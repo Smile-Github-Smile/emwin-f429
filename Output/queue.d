@@ -46,6 +46,7 @@
 ..\..\output\queue.o: ..\..\Driver\includes.h
 ..\..\output\queue.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\queue.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
+..\..\output\queue.o: ..\..\Driver\ft5206.h
 ..\..\output\queue.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\queue.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\queue.o: ..\..\FreeRTOS\include\deprecated_definitions.h

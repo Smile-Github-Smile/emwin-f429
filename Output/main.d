@@ -43,6 +43,7 @@
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\main.o: ..\..\Driver\ft5206.h
 ..\..\output\main.o: ..\..\Driver\tftlcd.h
 ..\..\output\main.o: ..\..\FreeRTOS\include\FreeRTOS.h
 ..\..\output\main.o: D:\keil5\ARM\ARMCC\Bin\..\include\stddef.h
@@ -85,4 +86,4 @@
 ..\..\output\main.o: ..\..\STemwin\inc\ICONVIEW.h
 ..\..\output\main.o: ..\..\STemwin\inc\LISTVIEW.h
 ..\..\output\main.o: ..\..\STemwin\inc\TREEVIEW.h
-..\..\output\main.o: ..\..\Demo\textdisplay.h
+..\..\output\main.o: ..\..\Tast2D\textdisplay.h

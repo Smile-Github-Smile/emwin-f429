@@ -43,3 +43,4 @@
 ..\..\output\cpu.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\cpu.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\..\output\cpu.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\cpu.o: ..\..\Driver\ft5206.h

@@ -46,6 +46,7 @@
 ..\..\output\timers.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\timers.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\timers.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
+..\..\output\timers.o: ..\..\Driver\ft5206.h
 ..\..\output\timers.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\timers.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\timers.o: ..\..\FreeRTOS\include\deprecated_definitions.h

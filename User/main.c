@@ -21,7 +21,7 @@
 #include "GUI.h"
 #include "WM.h"
 #include "GUIDEMO.h"
-
+//emwin-task
 #include "textdisplay.h"
 
 
@@ -31,15 +31,16 @@
  *************************************************************************
  */
 
-/* 创建任务句柄 */
+/* App任务句柄 */
 static TaskHandle_t AppTaskCreate_Handle = NULL;
 /* Main任务句柄 */
 static TaskHandle_t Main_Task_Handle = NULL;
-/* Main任务句柄 */
+/* Tick任务句柄 */
 static TaskHandle_t Tick_Task_Handle = NULL;
 /* GUI任务句柄 */
 static TaskHandle_t GUI_Task_Handle = NULL;
-
+/* Touch任务句柄 */
+static TaskHandle_t Touch_Task_Handle = NULL;
 
 /*
  *************************************************************************
@@ -48,9 +49,10 @@ static TaskHandle_t GUI_Task_Handle = NULL;
  */
 static void AppTaskCreate(void);/* 用于创建任务 */
 
-static void Main_Task(void* parameter);/* Main_Task任务实现 */
-static void Tick_Task(void* parameter);/* Main_Task任务实现 */
-static void GUI_Task(void* parameter);/* GUI_Task任务实现 */
+static void Main_Task(void* p_arg);		/* Main_Task任务实现 */
+static void Tick_Task(void* p_arg);		/* Main_Task任务实现 */
+static void GUI_Task(void* p_arg); 		/* GUI_Task任务实现  */
+static void Touch_Task(void* p_arg); 	/* GUI_Task任务实现  */
 
 
 /*
@@ -126,6 +128,15 @@ static void AppTaskCreate(void)
 					   (TaskHandle_t     )&GUI_Task_Handle);		/* 任务控制块指针 */
 	if(pdPASS == xReturn)
 		printf(" creat GUI_Task  success！\r\n");
+	
+	xReturn = xTaskCreate((TaskFunction_t)Touch_Task,				/* 任务入口函数 */
+					   (const char*      )"Touch_Task",				/* 任务名称 */
+					   (uint16_t         )2048,      				/* 任务栈大小 */
+					   (void*            )NULL,      				/* 任务入口函数参数 */
+					   (UBaseType_t      )1,         				/* 任务的优先级 */
+					   (TaskHandle_t     )&Touch_Task_Handle);		/* 任务控制块指针 */
+	if(pdPASS == xReturn)
+		printf(" creat GUI_Task  success！\r\n");
 
 	vTaskDelete(AppTaskCreate_Handle);//删除AppTaskCreate任务
 
@@ -139,7 +150,7 @@ static void AppTaskCreate(void)
   * @retval 无
   */
 u8 pBuffer[20];
-static void Main_Task(void* parameter)
+static void Main_Task(void* p_arg)
 {
 	while(1)
 	{
@@ -154,7 +165,7 @@ static void Main_Task(void* parameter)
   * @param 	无
   * @retval 无
   */
-static void Tick_Task(void* parameter)
+static void Tick_Task(void* p_arg)
 {
 	while(1)
 	{
@@ -170,19 +181,37 @@ static void Tick_Task(void* parameter)
   * @param 	无
   * @retval 无
   */
-static void GUI_Task(void* parameter)
+static void GUI_Task(void* p_arg)
 {
 	WM_SetCreateFlags(WM_CF_MEMDEV);
 	GUI_Init();
 	WM_MULTIBUF_Enable(1);
 	WM_MOTION_Enable(1);
-	
+	GUI_CURSOR_Show();
 	GUIDEMO_Main();
 	while(1)
 	{
 		vTaskDelay(100);
 	}
 }
+
+
+/**
+  * @brief 	TOUCH任务主体
+  * @note 	无
+  * @param 	无
+  * @retval 无
+  */
+static void Touch_Task(void *p_arg) 
+{
+	while(1)
+	{
+		GUI_TOUCH_Exec();
+		vTaskDelay(1);
+	}
+	
+}
+
 
 
  

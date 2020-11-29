@@ -8,9 +8,12 @@
 //配置程序,用于创建显示驱动器件,设置颜色转换程序和显示尺寸
 void LCD_X_Config(void) 
 {
-	GUI_DEVICE_CreateAndLink(&GUIDRV_Template_API,GUICC_M565,0,0); //创建显示驱动器件
-	LCD_SetSizeEx(0,lcddev.width,lcddev.height);
-	LCD_SetVSizeEx(0,lcddev.width,lcddev.height);
+	GUI_DEVICE_CreateAndLink(&GUIDRV_Template_API, GUICC_M565, 0, 0); //创建显示驱动器件
+	LCD_SetSizeEx(0, lcddev.width, lcddev.height);
+	LCD_SetVSizeEx(0, lcddev.width, lcddev.height);
+	
+	GUI_TOUCH_Calibrate(GUI_COORD_X, 0, lcddev.width, 0, lcddev.width-1);   
+	GUI_TOUCH_Calibrate(GUI_COORD_Y, 0, lcddev.height, 0, lcddev.height-1);
 }
 
 //显示器驱动的回调函数

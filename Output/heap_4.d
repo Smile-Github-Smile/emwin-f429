@@ -46,6 +46,7 @@
 ..\..\output\heap_4.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdio.h
 ..\..\output\heap_4.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\heap_4.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
+..\..\output\heap_4.o: ..\..\Driver\ft5206.h
 ..\..\output\heap_4.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\heap_4.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\heap_4.o: ..\..\FreeRTOS\include\deprecated_definitions.h

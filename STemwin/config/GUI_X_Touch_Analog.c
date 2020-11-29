@@ -31,58 +31,34 @@ Purpose     : Config / System dependent externals for GUI
 ---------------------------END-OF-HEADER------------------------------
 */
 #include "GUI.h"
-#include "touch.h"
-#include "tftlcd.h"
-#include "usart.h"
+#include "cpu.h"
+
 
 
 void GUI_TOUCH_X_ActivateX(void) 
 {
- // XPT2046_WriteCMD(0x90);
+
 }
 
 
 void GUI_TOUCH_X_ActivateY(void)
 {
-  //XPT2046_WriteCMD(0xd0);
+  
 }
 
 int  GUI_TOUCH_X_MeasureX(void) 
 {
-	int32_t xvalue;
-	if((lcddev.id == 0X5510)||(lcddev.id == 0X1963)||(lcddev.id==0X7084)||(lcddev.id==0X4342)||(lcddev.id==0X7016)||(lcddev.id==0X4384)||(lcddev.id==0X1018)) //电容屏的触摸值获取
-	{
-		tp_dev.scan(0);
-		xvalue=tp_dev.x[0];
-		return xvalue;
-	}else				//电阻屏
-	{
-		   if(lcddev.dir == 0) //竖屏
-        {
-            return TP_Read_XOY(0XD0);  //CMD_RDX=0XD0
-        }else{
-            return TP_Read_XOY(0X90);  //CMD_RDX=0XD0
-        }
-	}
+	INT32S xvalue;
+	tp_dev.scan(0);
+	xvalue = tp_dev.x[0];
+	return xvalue;
 }
 
 int  GUI_TOUCH_X_MeasureY(void) 
 {	
-	int32_t yvalue;
-    
-	if((lcddev.id == 0X5510)||(lcddev.id == 0X1963)||(lcddev.id==0X7084)||(lcddev.id==0X4342)||(lcddev.id==0X7016)||(lcddev.id==0X4384)||(lcddev.id==0X1018))//电容屏的触摸值获取
-	{
-		tp_dev.scan(0);
-		yvalue = tp_dev.y[0];
-		return yvalue;
-	}else				//电阻屏
-	{
-		        if(lcddev.dir == 0) //竖屏
-        {
-            return TP_Read_XOY(0X90);  //CMD_RDX=0XD0
-        }else{
-            return TP_Read_XOY(0XD0);  //CMD_RDX=0XD0
-        }
-	}
+	INT32S yvalue;
+	tp_dev.scan(0);
+	yvalue = tp_dev.y[0];
+	return yvalue;
 }
 

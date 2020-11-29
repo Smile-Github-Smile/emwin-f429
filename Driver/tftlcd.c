@@ -85,7 +85,8 @@ void initLCD(void)
 	LTDC_Layer_Window_Config(0 , 0 , 0 , lcdltdc.pwidth , lcdltdc.pheight);	//层窗口配置,以LCD面板坐标系为基准,不要随便修改!
 	
 	lcddev.width = lcdltdc.pwidth;	//设置lcddev的宽度参数
-	lcddev.height = lcdltdc.pheight;//设置lcddev的宽度参数		
+	lcddev.height = lcdltdc.pheight;//设置lcddev的宽度参数	
+	lcddev.dir = 1; 				//默认为竖屏 0;竖屏 1：横屏
 	lcdltdc.activelayer = 0;		//选择第1层
     LCD_Clear(0XFFFFFFFF);			//清屏
 	LCD_Display_Dir(1);				//默认为竖屏 0;竖屏 1：横屏

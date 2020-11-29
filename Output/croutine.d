@@ -46,6 +46,7 @@
 ..\..\output\croutine.o: D:\keil5\ARM\ARMCC\Bin\..\include\string.h
 ..\..\output\croutine.o: D:\keil5\ARM\ARMCC\Bin\..\include\math.h
 ..\..\output\croutine.o: D:\keil5\ARM\ARMCC\Bin\..\include\stdlib.h
+..\..\output\croutine.o: ..\..\Driver\ft5206.h
 ..\..\output\croutine.o: ..\..\FreeRTOS\include\projdefs.h
 ..\..\output\croutine.o: ..\..\FreeRTOS\include\portable.h
 ..\..\output\croutine.o: ..\..\FreeRTOS\include\deprecated_definitions.h

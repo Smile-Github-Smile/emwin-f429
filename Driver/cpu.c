@@ -118,6 +118,27 @@ static void initPort(void)
 	GPIO_Init(GPIOD, &GPIO_InitStructure);
 	/*  ¡¨Ω” PD6 µΩ USART2_Rx*/
 	GPIO_PinAFConfig(GPIOD, GPIO_PinSource6, GPIO_AF_USART2);
+	
+	//TFT¥•√˛–æ∆¨
+	GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;;  
+	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6;  
+	GPIO_Init(GPIOH, &GPIO_InitStructure); 		//T_SCK
+	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;  
+	GPIO_Init(GPIOI, &GPIO_InitStructure); 		//T_MOSI
+	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_8;  
+	GPIO_Init(GPIOI, &GPIO_InitStructure); 		//T_CS 
+	
+	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7;  
+	GPIO_Init(GPIOH, &GPIO_InitStructure); 		//T_PEN  
 
 
 	/* LVDS-TFT≈‰÷√ */
@@ -622,5 +643,6 @@ void hardwareInit(void)
 	initSDRAM();
 	initLCD();
 	setBlLedZt(1);
+	tp_dev.init();
 }
 /* ------------------------------------------end of file---------------------------------------- */
