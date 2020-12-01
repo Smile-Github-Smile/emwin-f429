@@ -627,6 +627,20 @@ void setBlLedZt(BOOLEAN State)
 	}
 }
 
+
+void LCD_SetBackLight(INT8U value)
+{
+	if(value)
+	{
+		GPIO_SetBits(GPIOB, GPIO_Pin_5);
+	}
+	else
+	{
+		GPIO_ResetBits(GPIOB, GPIO_Pin_5);
+	}
+}
+
+
 /**
  ******************************************************************
  *	硬件初始化功能函数段

@@ -22,6 +22,7 @@ int fgetc(FILE *f);
 void systemRunLedTimer_ISR(void);
 void setSystemLedZt(BOOLEAN State);
 void setBlLedZt(BOOLEAN State);
+void LCD_SetBackLight(INT8U value);
 void hardwareInit(void);
 
 #endif	// __CPU_H__

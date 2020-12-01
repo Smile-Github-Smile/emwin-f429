@@ -31,6 +31,157 @@ static void LTDC_Layer_Window_Config(INT8U layerx, INT16U sx, INT16U sy, INT16U 
 static void LCD_Display_Dir(INT8U dir);
 
 
+
+/*
+*********************************************************************************************************
+*	                                 下面的函数被emWin所调用
+*********************************************************************************************************
+*/
+/*
+*********************************************************************************************************
+*	函 数 名: LCD_ConfigLTDC
+*	功能说明: 配置LTDC
+*	形    参: 无
+*	返 回 值: 无
+*   笔    记:
+*       LCD_TFT 同步时序配置（整理自官方做的一个截图，言简意赅）：
+*       ----------------------------------------------------------------------------
+*    
+*                                                 Total lcdltdc.width
+*                             <--------------------------------------------------->
+*                       Hsync width lcdltdc.hbp             Active lcdltdc.width                lcdltdc.hfp
+*                             <---><--><--------------------------------------><-->
+*                         ____    ____|_______________________________________|____ 
+*                             |___|   |                                       |    |
+*                                     |                                       |    |
+*                         __|         |                                       |    |
+*            /|\    /|\  |            |                                       |    |
+*             | VSYNC|   |            |                                       |    |
+*             |lcdltdc.width\|/  |__          |                                       |    |
+*             |     /|\     |         |                                       |    |
+*             |  lcdltdc.vbp |      |         |                                       |    |
+*             |     \|/_____|_________|_______________________________________|    |
+*             |     /|\     |         | / / / / / / / / / / / / / / / / / / / |    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*    Total    |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*    Heigh    |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |Active|      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |Heigh |      |         |/ / / / / / Active Display Area / / / /|    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |      |      |         |/ / / / / / / / / / / / / / / / / / / /|    |
+*             |     \|/_____|_________|_______________________________________|    |
+*             |     /|\     |                                                      |
+*             |  lcdltdc.vfp |      |                                                      |
+*            \|/    \|/_____|______________________________________________________|
+*            
+*     
+*     每个LCD设备都有自己的同步时序值：
+*     Horizontal Synchronization (Hsync) 
+*     Horizontal Back Porch (lcdltdc.hbp)       
+*     Active lcdltdc.width                      
+*     Horizontal Front Porch (lcdltdc.hfp)     
+*   
+*     Vertical Synchronization (Vsync)  
+*     Vertical Back Porch (lcdltdc.vbp)         
+*     Active Heigh                       
+*     Vertical Front Porch (lcdltdc.vfp)         
+*     
+*     LCD_TFT 窗口水平和垂直的起始以及结束位置 :
+*     ----------------------------------------------------------------
+*   
+*     HorizontalStart = (Offset_X + Hsync + lcdltdc.hbp);
+*     HorizontalStop  = (Offset_X + Hsync + lcdltdc.hbp + Window_Width - 1); 
+*     VarticalStart   = (Offset_Y + Vsync + lcdltdc.vbp);
+*     VerticalStop    = (Offset_Y + Vsync + lcdltdc.vbp + Window_Heigh - 1);
+*
+*********************************************************************************************************
+*/
+
+void LCD_ConfigLTDC(void)
+{
+	
+	LTDC_InitTypeDef       LTDC_InitStruct;
+	LTDC_Layer_TypeDef     LTDC_Layerx;
+
+	/* 使能LTDC */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_LTDC, ENABLE);
+
+	/* 使能DMA2D */
+	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_DMA2D, ENABLE);
+
+	/* 配置信号极性 */	
+	LTDC_InitStruct.LTDC_HSPolarity = LTDC_HSPolarity_AL;	/* HSYNC 低电平有效 */
+	LTDC_InitStruct.LTDC_VSPolarity = LTDC_VSPolarity_AL;	/* VSYNC 低电平有效 */
+	LTDC_InitStruct.LTDC_DEPolarity = LTDC_DEPolarity_AL;	/* DE 低电平有效 */
+	LTDC_InitStruct.LTDC_PCPolarity = LTDC_PCPolarity_IPC;
+
+	/* 背景色 */
+	LTDC_InitStruct.LTDC_BackgroundRedValue = 0xff;
+	LTDC_InitStruct.LTDC_BackgroundGreenValue = 0;
+	LTDC_InitStruct.LTDC_BackgroundBlueValue = 0;
+	
+	/* 
+	   LTDC时钟配置说明：
+	     函数RCC_PLLSAIConfig的第一个参数是PLLSAI_N，第三个参数数PLLSAI_R。
+	     函数RCC_LTDCCLKDivConfig的参数是RCC_PLLSAIDivR。
+	   
+	   下面举一个例子：PLLSAI_N = 400， PLLSAI_R = 4  RCC_PLLSAIDivR = 2:
+	     首先，输入时钟 PLLSAI_VCO Input = HSE_VALUE / PLL_M = 8M / 8 = 1MHz 
+	       输出时钟 PLLSAI_VCO Output  = PLLSAI_VCO Input * PLLSAI_N = 1 * 400 = 400 1MHz 
+	       PLLLCDCLK = PLLSAI_VCO Output / PLLSAI_R = 400 / 4 = 100 1MHz 
+	     最好，LTDC 时钟 = PLLLCDCLK / RCC_PLLSAIDivR = 100 / 2 = 50 1MHz 
+	 */
+				
+	LTDC_InitStruct.LTDC_HSPolarity = LTDC_HSPolarity_AL;	/* HSYNC 低电平有效 */
+	LTDC_InitStruct.LTDC_VSPolarity = LTDC_VSPolarity_AL;	/* VSYNC 低电平有效 */
+	LTDC_InitStruct.LTDC_DEPolarity = LTDC_DEPolarity_AL;	/* DE 低电平有效 */
+	LTDC_InitStruct.LTDC_PCPolarity = LTDC_PCPolarity_IIPC;
+	
+	/* IPS 7寸 1024*600，  像素时钟频率范围 : 57 -- 65 --- 70.5MHz 
+
+		PLLSAI_VCO Input   = HSE_VALUE / PLL_M = 8M / 4 = 2 Mhz
+		PLLSAI_VCO Output  = PLLSAI_VCO Input * PLLSAI_N =   2 * 429 = 858 Mhz
+		PLLLCDCLK = PLLSAI_VCO Output / PLLSAI_R = 858 / 4 = 214.5 Mhz
+		LTDC clock frequency = PLLLCDCLK / RCC_PLLSAIDivR = 214.5 / 4 = 53.625 Mhz 	
+
+		(429, 2, 4); RCC_PLLSAIDivR_Div4 实测像素时钟 = 53.7M
+	*/
+	RCC_PLLSAIConfig(429, 2, 6);
+	RCC_LTDCCLKDivConfig(RCC_PLLSAIDivR_Div4);
+
+	lcdltdc.width = 1024;
+	lcdltdc.height = 600;
+
+	lcdltdc.hsw = 2;	/* =10时，显示错位，20时部分屏可以的,80时全部OK */
+	lcdltdc.hbp = 157;
+	lcdltdc.hfp = 160;
+
+	lcdltdc.vsw = 2;
+	lcdltdc.vbp = 20;
+	lcdltdc.vfp = 12;			
+	
+	/* 使能 PLLSAI */
+	RCC_PLLSAICmd(ENABLE);
+	/* 等待完成 */
+	while(RCC_GetFlagStatus(RCC_FLAG_PLLSAIRDY) == RESET);
+	
+	/* 配置LTDC的同步时序 */
+	LTDC_InitStruct.LTDC_HorizontalSync = lcdltdc.hsw;
+	LTDC_InitStruct.LTDC_VerticalSync = lcdltdc.vsw;
+	LTDC_InitStruct.LTDC_AccumulatedHBP = LTDC_InitStruct.LTDC_HorizontalSync + lcdltdc.hbp;
+	LTDC_InitStruct.LTDC_AccumulatedVBP = LTDC_InitStruct.LTDC_VerticalSync + lcdltdc.vbp;
+	LTDC_InitStruct.LTDC_AccumulatedActiveW = lcdltdc.width + LTDC_InitStruct.LTDC_AccumulatedHBP;
+	LTDC_InitStruct.LTDC_AccumulatedActiveH = lcdltdc.height + LTDC_InitStruct.LTDC_AccumulatedVBP;
+	LTDC_InitStruct.LTDC_TotalWidth = LTDC_InitStruct.LTDC_AccumulatedActiveW + lcdltdc.hfp;
+	LTDC_InitStruct.LTDC_TotalHeigh = LTDC_InitStruct.LTDC_AccumulatedActiveH + lcdltdc.vfp;
+
+	LTDC_Init(&LTDC_InitStruct);
+}
+
+
 //RGBLcd初始化函数
 void initLCD(void)
 {   
