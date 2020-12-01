@@ -1539,6 +1539,10 @@ void LCD_X_Config(void)
 	//
 	LCD_SetSizeEx (0, lcdltdc.width, lcdltdc.height);
 	LCD_SetVSizeEx(0, lcdltdc.width, lcdltdc.height * NUM_VSCREENS);
+		
+	GUI_TOUCH_Calibrate(GUI_COORD_X, 0, lcddev.width, 0, lcddev.width-1);   
+	GUI_TOUCH_Calibrate(GUI_COORD_Y, 0, lcddev.height, 0, lcddev.height-1);
+		
 	#if (GUI_NUM_LAYERS > 1)
 		//
 		// Set display driver and color conversion for 2nd layer
